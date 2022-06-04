@@ -1,0 +1,308 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+/* variables */
+:root {
+    --body-bgColor: #050A2E;
+    --todo-category-bg: #0A0F38;
+    --white-color: #e6e6e6;
+    --task-complated: #4ACD57;
+    --border-color: rgba(255, 255, 255, 0.103);
+    --p-color: #a633f9ec;
+
+    --p-Bg-color: #a733f947;
+}
+
+/* style */
+/* body */
+body {
+    min-height: 100vh;
+    background-color: var(--body-bgColor);
+    overflow-x: hidden;
+    color: var(--white-color);
+    font-family: 'Roboto', sans-serif;
+}
+
+button,
+input,
+input:focus,
+input:hover,
+input:active {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+/* border-radius */
+.taskCategoryList li,
+button,
+#allTaskList li.list,
+.taskListMain,
+#todoMain {
+    border-radius: .2rem !important;
+}
+
+#todoMain {
+    margin: 1rem;
+    padding: 1rem;
+    min-height: 100vh;
+    background-color: var(--todo-category-bg);
+    display: flex;
+}
+
+.taskCategory {
+    padding: 1rem;
+    width: 30%;
+}
+
+.taskCategory .taskCategoryTitle {
+    font-size: 1.5rem;
+    padding: 1rem 0;
+}
+
+.taskCategory .taskCategoryList {
+    list-style: none;
+    padding-left: 2rem;
+    pointer-events: none;
+}
+
+.taskCategory .taskCategoryList li {
+    margin: .5rem 0;
+    font-size: 1.2rem;
+    padding: 0 1rem;
+    height: 3.5rem;
+    align-items: center;
+    pointer-events: all;
+    position: relative;
+    align-items: center;
+    display: flex;
+    width: 80%;
+    cursor: pointer;
+}
+
+.taskCategory .taskCategoryList li.activeTaskList {
+    font-size: 1.5rem;
+    font-weight: 600;
+    justify-content: space-between;
+}
+
+.taskCategory .taskCategoryList li.activeTaskList:nth-child(1) {
+    background-color: #1240F5;
+}
+
+.taskCategory .taskCategoryList li.activeTaskList:nth-child(2n) {
+    background-color: #F19731;
+}
+
+
+.taskCategoryList li::before {
+    content: "";
+    font-weight: bold;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border: 2px solid var(--white-color);
+    position: absolute;
+    left: -1.3rem;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: .5rem;
+}
+
+.taskCategoryList li.activeTaskList::before {
+    background-color: #1240F5;
+    border-color: #1240F5;
+    left: -1.7rem;
+
+}
+
+.taskCategory .taskCategoryList li.activeTaskList:nth-child(2n)::before {
+    background-color: #F19731;
+    border-color: #F19731;
+    left: -1.7rem;
+}
+
+#addTaskCategory,
+.addTaskItem {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.addtaskCategoryBtn {
+    color: var(--white-color);
+    padding: 1rem;
+    cursor: pointer;
+    background-color: var(--p-color);
+    margin-right: 1rem;
+}
+
+.addtaskCategoryList,
+.addtaskCategoryList:focus,
+.addtaskCategoryList:hover,
+.addtaskCategoryList:active {
+    border-bottom: 1px solid var(--white-color);
+    text-transform: capitalize;
+    padding: .5rem;
+    color: var(--white-color);
+    height: 3rem;
+    font-size: 1rem;
+    display: grid;
+    place-items: center;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#ulTitle {
+    font-size: 1.5rem;
+}
+
+.addtaskCategoryBtn:hover {
+    transition: .5s;
+    background-color: var(--white-color);
+    color: var(--body-bgColor);
+}
+
+/* right taskListMain */
+
+.taskListMain {
+    margin: 1rem;
+    width: 75%;
+    background-color: var(--body-bgColor);
+    padding: 1.5rem 2.5rem;
+    margin-left: 0;
+}
+
+.allTaskTitle {
+    margin-left: 1rem rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 3rem;
+}
+
+.allTaskTitle span {
+    font-size: 1rem;
+}
+
+#allTaskList {
+    list-style: none;
+    margin-left: 1rem;
+}
+
+#allTaskList li.list {
+    padding: 1rem;
+    background-color: var(--todo-category-bg);
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+#allTaskList li input {
+    font-size: 1rem;
+    background: var(--todo-category-bg);
+}
+
+#allTaskList li label {
+    margin-left: 1rem;
+}
+
+#allTaskList li #iconOfTeask {
+    display: flex;
+    padding: .3rem;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--white-color);
+    border-radius: 1rem;
+}
+
+#allTaskList li #iconOfTeask.fa-check:before {
+    opacity: 0;
+}
+
+#trashOfUl,
+#trash {
+    text-align: right;
+    color: #AD294B;
+    font-size: 1.2rem;
+    opacity: 0;
+}
+
+li.activeTaskList #trashOfUl i {
+    pointer-events: none;
+}
+
+li.activeTaskList #trashOfUl {
+    opacity: 1;
+    display: block !important;
+    color: var(--white-color);
+    padding: 1rem;
+    cursor: pointer;
+    position: absolute;
+    right: -60px;
+    background: var(--p-color);
+}
+
+#allTaskList li.taskComplated #trash {
+    opacity: 1;
+}
+
+#allTaskList li.taskComplated #iconOfTeask.fa-check {
+    border: 2px solid var(--task-complated);
+}
+
+#allTaskList li.taskComplated #iconOfTeask.fa-check:before {
+    opacity: 1;
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.list div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.taskComplated #iconOfTeask {
+    background-color: var(--task-complated);
+}
+
+.taskComplated label {
+    text-decoration: line-through;
+    opacity: .4;
+}
+
+.addTaskItem {
+    justify-content: center;
+    padding: 1rem;
+}
+
+.addTaskItem .addtaskCategoryList {
+    width: 70%;
+    text-transform: capitalize;
+    border-bottom: 1px solid var(--p-color);
+    padding: 1rem;
+}
+
+#addtaskItemBtn {
+    background: var(--p-color);
+}

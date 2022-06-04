@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel=" preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="appStyle.css">
+    <title>Task</title>
+</head>
+
+<body>
+    <!-- todo -->
+    <section id="todoMain">
+        <div class="taskCategory">
+            <h2 class="taskCategoryTitle"> Task Category</h2>
+            <ul class="taskCategoryList" id="categoryUl">
+                <!-- <li class="activeTaskList" id="categoryLi">list-1</li>
+                <li>list-2</li>
+                <li>list-3</li> -->
+            </ul>
+            <form action="" id="addTaskCategory">
+                <input type="text" id="addNewTaskCategory" class="addtaskCategoryList" placeholder="add new task list">
+                <button type="button" id="addNewTaskCategoryBtn" class="addtaskCategoryBtn"><i
+                        class="fas fa-solid fa-plus"></i></button>
+            </form>
+        </div>
+        <div class="taskListMain">
+            <div class="tasksLists">
+                <h2 class="allTaskTitle">
+                    <span id="ulTitle">List...</span> <span id="remainingTask">3 Task Remaining</span>
+                </h2>
+                <ul id="allTaskList">
+                    <li class="list taskComplated">
+                        <div> <i id="iconOfTeask" class="fas fa-solid fa-check"></i>
+                            <label>Apple</label></div> <button id="trash"><i class="fas fa-solid fa-trash"></i></button>
+                    </li>
+                    <li class="list ">
+                        <div> <i id="iconOfTeask" class="fas fa-solid fa-check"></i>
+                            <label>Apple</label></div> <button id="trash"><i class="fas fa-solid fa-trash"></i></button>
+                    </li>
+                    <li class="list taskComplated">
+                        <div> <i id="iconOfTeask" class="fas fa-solid fa-check"></i>
+                            <label>Apple</label></div> <button id="trash"><i class="fas fa-solid fa-trash"></i></button>
+                    </li>
+                </ul>
+                <form action="" class="addTaskItem">
+                    <input type="text" id="addtaskItem" class="addtaskCategoryList" placeholder="add new task list">
+                    <button type="button" id="addtaskItemBtn" class="addtaskCategoryBtn"><i
+                            class="fas fa-solid fa-plus"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- script -->
+    <script src="app.js"></script>
+</body>
+
+</html>
