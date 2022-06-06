@@ -45,7 +45,8 @@ input:active {
 button,
 #allTaskList li.list,
 .taskListMain,
-#todoMain {
+#todoMain,
+#addTaskCategory {
     border-radius: .2rem !important;
 }
 
@@ -55,11 +56,12 @@ button,
     min-height: 100vh;
     background-color: var(--todo-category-bg);
     display: flex;
+    flex-wrap: wrap;
 }
 
 .taskCategory {
     padding: 1rem;
-    width: 30%;
+    width: 100%;
 }
 
 .taskCategory .taskCategoryTitle {
@@ -71,10 +73,13 @@ button,
     list-style: none;
     padding-left: 2rem;
     pointer-events: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .taskCategory .taskCategoryList li {
-    margin: .5rem 0;
+    margin: 1rem 6rem 0 0;
     font-size: 1.2rem;
     padding: 0 1rem;
     height: 3.5rem;
@@ -82,8 +87,8 @@ button,
     pointer-events: all;
     position: relative;
     align-items: center;
+    width: 18rem;
     display: flex;
-    width: 80%;
     cursor: pointer;
 }
 
@@ -93,11 +98,11 @@ button,
     justify-content: space-between;
 }
 
-.taskCategory .taskCategoryList li.activeTaskList:nth-child(1) {
+.taskCategory .taskCategoryList li.activeTaskList:nth-child(n) {
     background-color: #1240F5;
 }
 
-.taskCategory .taskCategoryList li.activeTaskList:nth-child(2n) {
+.taskCategory .taskCategoryList li.activeTaskList:nth-child(2n+1) {
     background-color: #F19731;
 }
 
@@ -132,11 +137,14 @@ button,
 
 #addTaskCategory,
 .addTaskItem {
-    margin-top: 2rem;
+    margin: 2rem auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin-top: 2rem;
+    width: 100%;
+    padding: 1rem .5rem;
+    background: var(--body-bgColor);
 }
 
 .addtaskCategoryBtn {
@@ -159,9 +167,7 @@ button,
     font-size: 1rem;
     display: grid;
     place-items: center;
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 90%;
 }
 
 #ulTitle {
@@ -178,7 +184,7 @@ button,
 
 .taskListMain {
     margin: 1rem;
-    width: 75%;
+    width: 100%;
     background-color: var(--body-bgColor);
     padding: 1.5rem 2.5rem;
     margin-left: 0;
@@ -305,4 +311,11 @@ li.activeTaskList #trashOfUl {
 
 #addtaskItemBtn {
     background: var(--p-color);
+}
+
+@media screen and (min-width: 992px) {
+    #addTaskCategory {
+        width: 60%;
+        margin: 2rem auto;
+    }
 }
