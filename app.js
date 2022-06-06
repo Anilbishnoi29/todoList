@@ -1,7 +1,7 @@
 'use strick';
 const categoryUl = document.querySelector('#categoryUl');
 const categoryBtn = document.querySelector('#addNewTaskCategoryBtn');
-
+const colorMode = document.getElementById("mode");
 
 const LOCAL_STORAGE_LIST_KEY = 'task.list';
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId';
@@ -75,3 +75,9 @@ function clearCategoryList(element) {
         element.removeChild(element.firstChild);
     }
 }
+
+// color mode
+colorMode.addEventListener('click', function () {
+    document.body.classList.toggle("lightMode");
+    colorMode.classList.toggle("modeColorBtn");
+})

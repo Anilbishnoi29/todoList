@@ -8,16 +8,58 @@ html {
     font-size: 16px;
 }
 
+#mode {
+    position: fixed;
+    background-color: #FF9600;
+    padding: .5rem;
+    top: 2rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    right: 0;
+    border-bottom-left-radius: .5rem;
+    border-top-left-radius: .5rem;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+#mode img {
+    width: 1.5rem;
+    pointer-events: none;
+}
+
 /* variables */
 :root {
-    --body-bgColor: #050A2E;
-    --todo-category-bg: #0A0F38;
-    --white-color: #e6e6e6;
-    --task-complated: #4ACD57;
+
+
+    /* Dark mode */
+    --body-bgColor: #121212;
+    --todo-category-bg: #000000;
+    --white-color: #FFFFFF;
+
+    --task-complated: #4BD965;
     --border-color: rgba(255, 255, 255, 0.103);
     --p-color: #a633f9ec;
-
     --p-Bg-color: #a733f947;
+}
+
+.lightMode {
+    --body-bgColor: #F2F2F7;
+    --todo-category-bg: #FFFFFF;
+    --white-color: #000000;
+    transition: .5s;
+}
+
+#mode.modeColorBtn {
+    background-color: var(--white-color);
+    transition: .5s;
+}
+
+#mode.modeColorBtn img {
+    filter: invert(1);
+    transition: .5s;
 }
 
 /* style */
@@ -99,11 +141,11 @@ button,
 }
 
 .taskCategory .taskCategoryList li.activeTaskList:nth-child(n) {
-    background-color: #1240F5;
+    background-color: #0579FF;
 }
 
 .taskCategory .taskCategoryList li.activeTaskList:nth-child(2n+1) {
-    background-color: #F19731;
+    background-color: #FF9600;
 }
 
 
@@ -123,15 +165,15 @@ button,
 }
 
 .taskCategoryList li.activeTaskList:nth-child(n):before {
-    background-color: #1240F5;
-    border-color: #1240F5;
+    background-color: #0579FF;
+    border-color: #0579FF;
     left: -1.7rem;
 
 }
 
 .taskCategory .taskCategoryList li.activeTaskList:nth-child(2n+1)::before {
-    background-color: #F19731;
-    border-color: #F19731;
+    background-color: #FF9600;
+    border-color: #FF9600;
     left: -1.7rem;
 }
 
@@ -187,7 +229,6 @@ button,
     background-color: var(--body-bgColor);
     padding: 1rem;
     margin-left: 0;
-    height: 50rem;
 }
 
 .allTaskTitle {
@@ -241,7 +282,7 @@ button,
 #trashOfUl,
 #trash {
     text-align: right;
-    color: #AD294B;
+    color: #FA3D31;
     font-size: 1.2rem;
     opacity: 0;
 }
@@ -253,12 +294,18 @@ li.activeTaskList #trashOfUl i {
 li.activeTaskList #trashOfUl {
     opacity: 1;
     display: block !important;
-    color: var(--white-color);
     padding: 1rem;
     cursor: pointer;
     position: absolute;
     right: -60px;
-    background: #AD294B;
+    color: #FA3D31;
+    background: var(--body-bgColor);
+}
+
+li.activeTaskList #trashOfUl:hover {
+    transition: .5s;
+    color: var(--body-bgColor);
+    background: #FA3D31;
 }
 
 #allTaskList li.taskComplated #trash {
