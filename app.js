@@ -7,6 +7,10 @@ const LOCAL_STORAGE_LIST_KEY = 'task.list';
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId';
 let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
 let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
+// color Mode
+let LOCAL_STORAGE_SELECTED_THEME_KEY = 'app.Theme';
+let selectedTheme = localStorage.getItem(LOCAL_STORAGE_SELECTED_THEME_KEY);
+document.body.className = selectedTheme;
 
 renderCategory();
 categoryBtn.addEventListener('click', e => {
@@ -30,6 +34,7 @@ function saveAndRender() {
 
 function saveTaskCategory() {
     localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists));
+    localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY, selectedListId);
 }
 // create list obj
 function createList(name) {
@@ -68,16 +73,21 @@ function renderCategory() {
         categoryUl.appendChild(categoryLi); // append li in ul
     })
 }
-console.log(lists);
+
 
 function clearCategoryList(element) {
     while (element.firstChild) {
         element.removeChild(element.firstChild);
     }
 }
-
-// color mode
+// color Mode
 colorMode.addEventListener('click', function () {
-    document.body.classList.toggle("lightMode");
-    colorMode.classList.toggle("modeColorBtn");
+    if (selectedTheme === "lightMode") {
+        selectedTheme = "";
+        localStorage.setItem(LOCAL_STORAGE_SELECTED_THEME, selectedTheme);
+    } else {
+        selectedTheme = "lightMode";
+        localStorage.setItem(LOCAL_STORAGE_SELECTED_THEME, selectedTheme);
+    }
+    document.body.className = selectedTheme;
 })
