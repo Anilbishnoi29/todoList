@@ -84,10 +84,10 @@ function clearCategoryList(element) {
 colorMode.addEventListener('click', function () {
     if (selectedTheme === "lightMode") {
         selectedTheme = "";
-        localStorage.setItem(LOCAL_STORAGE_SELECTED_THEME, selectedTheme);
+        localStorage.setItem(LOCAL_STORAGE_SELECTED_THEME_KEY, selectedTheme);
     } else {
         selectedTheme = "lightMode";
-        localStorage.setItem(LOCAL_STORAGE_SELECTED_THEME, selectedTheme);
+        localStorage.setItem(LOCAL_STORAGE_SELECTED_THEME_KEY, selectedTheme);
     }
     document.body.className = selectedTheme;
 })
