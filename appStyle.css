@@ -151,7 +151,7 @@ button,
     color: var(--white-color);
     padding: 1rem;
     cursor: pointer;
-    background-color: var(--p-color);
+    background-color: var(--task-complated);
     margin: 0 1rem;
 }
 
@@ -159,7 +159,7 @@ button,
 .addtaskCategoryList:focus,
 .addtaskCategoryList:hover,
 .addtaskCategoryList:active {
-    border-bottom: 1px solid var(--white-color);
+    border-bottom: 1px solid var(--task-complated);
     text-transform: capitalize;
     padding: .5rem;
     color: var(--white-color);
@@ -258,7 +258,7 @@ li.activeTaskList #trashOfUl {
     cursor: pointer;
     position: absolute;
     right: -60px;
-    background: var(--p-color);
+    background: #AD294B;
 }
 
 #allTaskList li.taskComplated #trash {
@@ -298,17 +298,6 @@ li.activeTaskList #trashOfUl {
 
 .addTaskItem {
     justify-content: center;
-}
-
-.addTaskItem .addtaskCategoryList {
-    width: 70%;
-    text-transform: capitalize;
-    border-bottom: 1px solid var(--p-color);
-    padding: 1rem;
-}
-
-#addtaskItemBtn {
-    background: var(--p-color);
 }
 
 @media screen and (min-width: 992px) {
