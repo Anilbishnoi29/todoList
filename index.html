@@ -19,48 +19,51 @@
 
 <body>
     <!-- todo -->
-    <div id="mode"><img src="img/circle-half-stroke-solid.svg" alt="mode" srcset=""></div>
-    <section id="todoMain">
-        <div class="taskCategory">
-            <h2 class="taskCategoryTitle"> Task Category</h2>
-            <ul class="taskCategoryList" id="categoryUl">
-                <!-- <li class="activeTaskList" id="categoryLi">list-1</li>
-                <li>list-2</li>
-                <li>list-3</li> -->
-            </ul>
-            <form action="" id="addTaskCategory">
-                <input type="text" id="addNewTaskCategory" class="addtaskCategoryList" placeholder="add new task list">
-                <button type="button" id="addNewTaskCategoryBtn" class="addtaskCategoryBtn"><i
-                        class="fas fa-solid fa-plus"></i></button>
-            </form>
-        </div>
-        <div class="taskListMain">
-            <div class="tasksLists">
-                <h2 class="allTaskTitle">
-                    <span id="ulTitle">List...</span> <span id="remainingTask">3 Task Remaining</span>
-                </h2>
-                <ul id="allTaskList">
-                    <li class="list taskComplated">
-                        <div> <i id="iconOfTeask" class="fas fa-solid fa-check"></i>
-                            <label>Apple</label></div> <button id="trash"><i class="fas fa-solid fa-trash"></i></button>
-                    </li>
-                    <li class="list ">
-                        <div> <i id="iconOfTeask" class="fas fa-solid fa-check"></i>
-                            <label>Apple</label></div> <button id="trash"><i class="fas fa-solid fa-trash"></i></button>
-                    </li>
-                    <li class="list taskComplated">
-                        <div> <i id="iconOfTeask" class="fas fa-solid fa-check"></i>
-                            <label>Apple</label></div> <button id="trash"><i class="fas fa-solid fa-trash"></i></button>
-                    </li>
-                </ul>
-                <form action="" class="addTaskItem">
-                    <input type="text" id="addtaskItem" class="addtaskCategoryList" placeholder="add new task list">
-                    <button type="button" id="addtaskItemBtn" class="addtaskCategoryBtn"><i
-                            class="fas fa-solid fa-plus"></i></button>
-                </form>
+    <!-- <div id="mode"><img src="img/circle-half-stroke-solid.svg" alt="mode" srcset=""></div> -->
+    <!-- todo-form -->
+    <div id="todoForm" class="">
+        <form action="" class="flex">
+            <div class="todoInputDiv flex flexCenter ">
+                <input type="text" id="todoTitle" class="" placeholder="What would you like to do?">
+            </div>
+            <div class="todoInputIconDiv flex flexCenter">
+                <span id="calendar"><i class="fas fa-solid fa-calendar"></i></span>
+                <span id="flag"><i class="fas fa-solid fa-flag"></i></span>
+                <span id="submit"><i class="fas fa-solid fa-check-double"></i></span>
+            </div>
+        </form>
+    </div>
+
+    <!-- main todo -->
+    <div class="taskBody flex flexEvenly">
+        <div class="borderRadius w-33 p1Task ">
+            <span id="taskTag"> <i class="fas fa-solid fa-bookmark"></i></span>
+            <h3>Task Title</h3>
+            <div class="flex flexCenter flexBetween">
+                <span id="taskDone"> <i class="fas fa-1x fa-solid fa-check"></i></span>
+                <span id="taskTime" class="flex flexCenter "><i class="fas fa-solid fa-clock"></i>
+                    <pre> 9pm 25-5-22</pre></span>
             </div>
         </div>
-    </section>
+        <div class="borderRadius complated w-33 p2Task ">
+            <span id="taskTag"> <i class="fas fa-solid fa-bookmark"></i></span>
+            <h3>Task Title</h3>
+            <div class="flex flexCenter flexBetween">
+                <span id="taskDone"> <i class="fas fa-1x fa-solid fa-check"></i></span>
+                <span id="taskTime" class="flex flexCenter "><i class="fas fa-solid fa-clock"></i>
+                    <pre> 9pm 25-5-22</pre></span>
+            </div>
+        </div>
+        <div class="borderRadius w-33 p3Task ">
+            <span id="taskTag"> <i class="fas fa-solid fa-bookmark"></i></span>
+            <h3>Task Title</h3>
+            <div class="flex flexCenter flexBetween">
+                <span id="taskDone"> <i class="fas fa-1x fa-solid fa-check"></i></span>
+                <span id="taskTime" class="flex flexCenter "><i class="fas fa-solid fa-clock"></i>
+                    <pre> 9pm 25-5-22</pre></span>
+            </div>
+        </div>
+    </div>
     <!-- script -->
     <script src="app.js"></script>
 </body>

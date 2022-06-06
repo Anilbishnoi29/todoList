@@ -8,365 +8,161 @@ html {
     font-size: 16px;
 }
 
-#mode {
-    position: fixed;
-    background-color: var(--yello-color);
-    padding: .5rem;
-    top: 2rem;
-    height: 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-    right: 0;
-    border-bottom-left-radius: .5rem;
-    border-top-left-radius: .5rem;
-    z-index: 1000;
-    cursor: pointer;
-}
-
-#mode img {
-    width: 1.5rem;
-    pointer-events: none;
-}
-
-/* variables */
+/* root */
 :root {
-
-
     /* Dark mode */
-    --body-bgColor: #121212;
-    --todo-category-bg: #000000;
+    --body-bg: #121212;
+    --bg-color: #2A2A2A;
+    --bg-2-color: #353535;
+    --form-bg-2-color: #323741;
+    --border-color: #414551;
     --white-color: #FFFFFF;
+    --p1-task: #F44336;
+    --p2-task: #3D5AFE;
+    --p3-task: #FF9100;
+    --done: #00C853;
 
-    --task-complated: #65D35A;
-    --border-color: rgba(255, 255, 255, 0.103);
-    --p-color: #a633f9ec;
-    --p-Bg-color: #a733f947;
-    --blue-color: #0E84FC;
-    --yello-color: #F49E31;
-    --red-color: #ED4636;
 }
 
-.lightMode {
-    --body-bgColor: #F2F2F7;
-    --todo-category-bg: #FFFFFF;
-    --white-color: #000000;
-    --task-complated: #5ACB57;
-    --blue-color: #037AFC;
-    --yello-color: #F49430;
-    --red-color: #EC462E;
-    transition: .5s;
+/* common classes */
+h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1em;
 }
 
-#mode.modeColorBtn {
-    background-color: var(--white-color);
-    transition: .5s;
+.w-33 {
+    background: var(--bg-color);
+    width: 30%;
+    padding: 1.5em;
+    margin: 1em;
+    position: relative;
 }
 
-#mode.modeColorBtn img {
-    filter: invert(1);
-    transition: .5s;
+.borderRadius {
+    border-radius: 1.5em;
 }
 
-/* style */
-/* body */
-body {
-    min-height: 100vh;
-    background-color: var(--body-bgColor);
-    overflow-x: hidden;
-    color: var(--white-color);
-    font-family: 'Roboto', sans-serif;
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flexCenter {
+    align-items: center;
+}
+
+.flexBetween {
+    justify-content: space-between;
+}
+
+.flexEvenly {
+    justify-content: space-evenly;
 }
 
 button,
+button:hover,
+button:focus,
 input,
 input:focus,
-input:hover,
-input:active {
-    background-color: transparent;
-    border: none;
+input:hover {
     outline: none;
+    border: none;
 }
 
-/* border-radius */
-.taskCategoryList li,
-button,
-#allTaskList li.list,
-.taskListMain,
-#todoMain,
-#addTaskCategory {
-    border-radius: .2rem !important;
+button {
+    background: none;
 }
 
-#todoMain {
-    margin: 1rem;
-    padding: 1rem;
-    min-height: 100vh;
-    background-color: var(--todo-category-bg);
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.taskCategory {
-    padding: 1rem 0;
-    width: 100%;
-}
-
-.taskCategory .taskCategoryTitle {
-    font-size: 1.5rem;
-    padding: 1rem 0;
-}
-
-.taskCategory .taskCategoryList {
-    list-style: none;
-    padding-left: 2rem;
-    pointer-events: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.taskCategory .taskCategoryList li {
-    margin: 1rem 0rem 0 0;
-    font-size: 1.1rem;
-    padding: 0 1rem;
-    height: 3.5rem;
-    align-items: center;
-    pointer-events: all;
-    position: relative;
-    align-items: center;
-    width: 14.5rem;
-    display: flex;
+span {
+    display: block;
+    padding: 1em;
+    background: var(--bg-2-color);
+    border-radius: 1em;
+    margin: 1em;
     cursor: pointer;
+    transition: .5s;
 }
 
-.taskCategory .taskCategoryList li.activeTaskList {
-    font-size: 1.2rem;
-    font-weight: 600;
-    justify-content: space-between;
+span:hover {
+    transform: translateY(-.4rem);
 }
 
-.taskCategory .taskCategoryList li.activeTaskList:nth-child(n) {
-    background-color: var(--blue-color);
+i {
+    color: var(--white-color);
+    font-size: 1.5rem;
+    pointer-events: none;
 }
 
-.taskCategory .taskCategoryList li.activeTaskList:nth-child(2n+1) {
-    background-color: var(--yello-color);
+/* body */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: var(--body-bg);
+    color: var(--white-color);
 }
 
-
-.taskCategoryList li::before {
-    content: "";
-    font-weight: bold;
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border: 2px solid var(--white-color);
-    position: absolute;
-    left: -1.3rem;
-    top: 0;
-    bottom: 0;
+/* todo form */
+#todoForm {
+    background: var(--bg-color);
+    padding: 1rem;
+    width: 100%;
     margin: auto;
-    border-radius: .5rem;
+    position: fixed;
+    bottom: 0;
 }
 
-.taskCategoryList li.activeTaskList:nth-child(n):before {
-    background-color: var(--blue-color);
-    border-color: var(--blue-color);
-    left: -1.7rem;
-
-}
-
-.taskCategory .taskCategoryList li.activeTaskList:nth-child(2n+1)::before {
-    background-color: var(--yello-color);
-    border-color: var(--yello-color);
-    left: -1.7rem;
-}
-
-#addTaskCategory,
-.addTaskItem {
-    margin: 2rem auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    margin-top: 2rem;
-    width: 100%;
-    padding: 1rem .5rem;
-    background: var(--body-bgColor);
-}
-
-.addtaskCategoryBtn {
-    color: var(--white-color);
+.todoInputDiv {
+    flex: 1;
     padding: 1rem;
-    cursor: pointer;
-    background-color: var(--task-complated);
-    margin: 0 1rem;
 }
 
-.addtaskCategoryList,
-.addtaskCategoryList:focus,
-.addtaskCategoryList:hover,
-.addtaskCategoryList:active {
-    border-bottom: 1px solid var(--task-complated);
+.todoInputDiv input {
+    width: 100%;
+    padding: 1em;
+    color: var(--white-color);
+    background: var(--h1-color);
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1.3rem;
     text-transform: capitalize;
-    padding: .5rem;
-    color: var(--white-color);
-    height: 3rem;
-    font-size: 1rem;
-    display: grid;
-    place-items: center;
-    width: 90%;
 }
 
-#ulTitle {
-    font-size: 1.5rem;
+/* task */
+.taskBody {
+    padding-top: 1em;
 }
 
-.addtaskCategoryBtn:hover {
-    transition: .5s;
-    background-color: var(--white-color);
-    color: var(--body-bgColor);
-}
-
-/* right taskListMain */
-
-.taskListMain {
-    width: 100%;
-    background-color: var(--body-bgColor);
-    padding: 1rem;
-    margin-left: 0;
-}
-
-.allTaskTitle {
-    margin-left: 1rem rem;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid var(--border-color);
-    margin-bottom: 3rem;
-}
-
-.allTaskTitle span {
-    font-size: 1rem;
-}
-
-#allTaskList {
-    list-style: none;
-}
-
-#allTaskList li.list {
-    padding: 1rem;
-    background-color: var(--todo-category-bg);
-    margin-top: 1rem;
-    display: flex;
-    align-items: center;
-}
-
-#allTaskList li input {
-    font-size: 1rem;
-    background: var(--todo-category-bg);
-}
-
-#allTaskList li label {
-    margin-left: 1rem;
-}
-
-#allTaskList li #iconOfTeask {
-    display: flex;
-    padding: .3rem;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid var(--white-color);
-    border-radius: 1rem;
-}
-
-#allTaskList li #iconOfTeask.fa-check:before {
-    opacity: 0;
-}
-
-#trashOfUl,
-#trash {
-    text-align: right;
-    color: var(--red-color);
-    font-size: 1.2rem;
-    opacity: 0;
-}
-
-li.activeTaskList #trashOfUl i {
-    pointer-events: none;
-}
-
-li.activeTaskList #trashOfUl {
-    opacity: 1;
-    display: block !important;
-    padding: 1rem;
-    cursor: pointer;
+#taskTag {
+    background: none;
     position: absolute;
-    right: -60px;
-    color: var(--red-color);
-    background: var(--body-bgColor);
+    margin-top: 0;
+    top: -0.1rem;
+    right: 0.7rem;
+    padding: 0;
 }
 
-li.activeTaskList #trashOfUl:hover {
-    transition: .5s;
-    color: var(--body-bgColor);
-    background: var(--red-color);
+.p1Task #taskTag i {
+    color: var(--p1-task);
 }
 
-#allTaskList li.taskComplated #trash {
-    opacity: 1;
+.p2Task #taskTag i {
+    color: var(--p2-task);
 }
 
-#allTaskList li.taskComplated #iconOfTeask.fa-check {
-    border: 2px solid var(--task-complated);
+.p3Task #taskTag i {
+    color: var(--p3-task);
 }
 
-#allTaskList li.taskComplated #iconOfTeask.fa-check:before {
-    opacity: 1;
-}
-
-.list {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-}
-
-.list div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-}
-
-.taskComplated #iconOfTeask {
-    background-color: var(--task-complated);
-}
-
-.taskComplated label {
-    text-decoration: line-through;
+.complated {
     opacity: .4;
 }
 
-.addTaskItem {
-    justify-content: center;
+.complated h3 {
+    text-decoration: line-through;
 }
 
-@media screen and (min-width: 992px) {
-    #addTaskCategory {
-        width: 60%;
-        margin: 2rem auto;
-    }
+.complated span:hover {
+    transform: translateY(-.0rem);
+}
 
-    .taskCategory .taskCategoryList li {
-        margin: 1rem 4rem 0 0;
-        width: 18rem;
-    }
-
-    .taskCategory {
-        padding: 1rem;
-    }
-
+.complated #taskDone {
+    background: var(--done);
 }
