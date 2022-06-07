@@ -53,8 +53,6 @@ function createTask() {
     let eventtime = document.querySelector(".datepicker-inputs").value;
     const taskPriority = document.querySelector("#taskPriority").value;
     const taskTitle = document.querySelector("#todoTitle").value;
-    const taskHour = document.querySelector("#taskHour").value;
-    const taskMin = document.querySelector("#taskMin").value;
 
     var target = new Date(eventtime);
     const current = formatAMPM(target);
