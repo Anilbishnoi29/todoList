@@ -35,6 +35,8 @@ pre {
     margin-left: 0.5rem;
 }
 
+
+
 .w-33 {
     background: var(--bg-color);
     width: 100%;
@@ -42,6 +44,28 @@ pre {
     margin: .5em 0em;
     position: relative;
 }
+
+.w-33 span#TaskTime {
+    background: #651FFF;
+    display: none;
+    position: absolute;
+    bottom: 0;
+    padding: .5em;
+    font-size: 1rem;
+    border-top-left-radius: .5em;
+    border-top-right-radius: .5em;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin: auto;
+    left: 6rem;
+    width: 8rem;
+}
+
+.w-33.onGoingTask span#TaskTime {
+    border: 2px solid #651FFF;
+    display: block;
+}
+
 
 .w-33 span {
     margin: 0;

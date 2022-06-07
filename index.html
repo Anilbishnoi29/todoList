@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="30">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -30,7 +31,14 @@
             <div class="todoInputIconDiv flex flexCenter flexBetween">
                 <span id="calendar" class="">
                     <div class="sd-container">
-                        <input class="sd datepicker-inputs" type="datetime-local" name="selected_date" />
+                        <input class="sd datepicker-inputs" type="datetime-local"
+                            pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" name="selected_date" />
+                        <!-- <input type="number" id="taskHour" placeholder="HH" min="00" max="12">
+                        <input type="number" id="taskMin" placeholder="MM" min="00" max="59">
+                        <select name="p" id="" class="datepicker-inputs">
+                            <option value="AM">AM</option>
+                            <option value="PM">PM</option>
+                        </select> -->
                     </div>
                 </span>
 
