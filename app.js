@@ -58,7 +58,7 @@ function createTask() {
     const current = formatAMPM(target);
     console.log(current)
 
-    const list = createList(taskTitle, current, taskPriority);
+    const list = createList(taskTitle, current, taskPriority, true);
     todoLists.push(list);
     saveAndRender();
 }
@@ -68,12 +68,13 @@ function saveToTask() {
     localStorage.setItem(LOCAL_STORAGE_TODO_KEY, JSON.stringify(todoLists));
 }
 
-function createList(name, dateTime, flag) {
+function createList(name, dateTime, flag, done) {
     return {
         id: Date.now().toString(),
         name: name,
         dateTime: dateTime,
-        flag: flag
+        flag: flag,
+        done: done
     }
 }
 
@@ -84,6 +85,10 @@ function renderList() {
         creatTasks.classList.add("borderRadius");
         creatTasks.classList.add("w-33");
         creatTasks.classList.add(`${list.flag}Task`);
+        creatTasks.dataset.listId = list.id;
+        if (list.done === true) {
+            creatTasks.classList.add("complated");
+        }
         let currentTime = new Date();
         let crntTime = formatAMPM(currentTime);
         if (list.dateTime > crntTime) {
@@ -94,7 +99,7 @@ function renderList() {
         creatTasks.innerHTML = `<span id="taskTag"> <i class="fas fa-solid fa-bookmark"></i></span>
     <h3>${list.name}</h3>
             <div class="flex flexCenter flexBetween">
-                <span id="taskDone"> <i class="fas fa-1x fa-solid fa-check"></i></span>
+                <span id="taskDone" class="taskDone"> <i class="fas fa-1x fa-solid fa-check"></i></span>
                 <span id="taskTime" class="flex flexCenter "><i class="fas fa-solid fa-clock"></i>
                     <pre>${list.dateTime}</pre></span>
             </div>
@@ -108,6 +113,7 @@ function saveAndRender() {
     saveToTask();
     renderList();
 }
+taskDone
 
 function clearElement(element) {
     while (element.firstChild) {
@@ -115,3 +121,21 @@ function clearElement(element) {
     }
 }
 renderList(); // render all list 
+
+todoTaskBody.addEventListener("click", (e) => {
+    if (e.target.className === "taskDone") {
+        let x = e.target.parentNode;
+        let removeId = x.parentNode.dataset.listId
+        todoLists.forEach(list => {
+            if (list.id === removeId) {
+                if (list.done == true) {
+                    list.done = false;
+                } else {
+                    list.done = true;
+                }
+            }
+        });
+    }
+    localStorage.removeItem(e)
+    saveAndRender();
+})

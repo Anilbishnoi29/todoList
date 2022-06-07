@@ -57,7 +57,7 @@ pre {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     margin: auto;
-    left: 6rem;
+    left: 90px;
     width: 8rem;
 }
 
@@ -127,6 +127,10 @@ span {
 
 span:hover {
     transform: translateY(-.4rem);
+}
+
+.w-33 span#TaskTime:hover {
+    transform: translateY(-.0rem);
 }
 
 i {
