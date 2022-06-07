@@ -31,6 +31,10 @@ h3 {
 
 }
 
+pre {
+    margin-left: 0.5rem;
+}
+
 .w-33 {
     background: var(--bg-color);
     width: 100%;
@@ -64,6 +68,12 @@ h3 {
     justify-content: space-evenly;
 }
 
+select#taskPriority,
+select#taskPriority :hover,
+select#taskPriority :focus,
+span,
+span:hover,
+span:focus,
 button,
 button:hover,
 button:focus,
@@ -72,6 +82,7 @@ input:focus,
 input:hover {
     outline: none;
     border: none;
+    position: relative;
 }
 
 button {
@@ -86,6 +97,8 @@ span {
     margin: 1em;
     cursor: pointer;
     transition: .5s;
+    display: flex;
+    align-items: center;
 }
 
 span:hover {
@@ -174,14 +187,20 @@ span#openInput.closedBtn {
     padding: 0;
 }
 
+#flag.p1Task i,
+.p1 i,
 .p1Task #taskTag i {
     color: var(--p1-task);
 }
 
+#flag.p2Task i,
+.p2 i,
 .p2Task #taskTag i {
     color: var(--p2-task);
 }
 
+#flag.p3Task i,
+.p3 i,
 .p3Task #taskTag i {
     color: var(--p3-task);
 }
@@ -202,6 +221,23 @@ span#openInput.closedBtn {
     background: var(--done);
 }
 
+/*  */
+select#taskPriority {
+    background: transparent;
+    color: #fff;
+    border: none;
+    padding-left: 0.2em;
+    cursor: pointer;
+}
+
+select#taskPriority option {
+    background: var(--bg-2-color);
+    color: #fff;
+    border: none;
+    padding-left: 0.2em;
+    cursor: pointer;
+}
+
 /* media */
 @media screen and (min-width:991px) {
     .w-33 {
@@ -217,4 +253,33 @@ span#openInput.closedBtn {
         flex-basis: auto;
     }
 
+}
+
+.sd {
+    border: none;
+    padding: 5px 10px;
+    height: 0px;
+    width: 00px;
+    background: transparent;
+    color: transparent !important;
+}
+
+input[type="datetime-local"i] {
+    font-size: 1rem;
+    padding: 1rem;
+    color: red;
+    filter: invert(1);
+}
+
+.sd::-webkit-calendar-picker-indicator {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    color: red;
+    background-color: transparent;
 }

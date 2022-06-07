@@ -24,11 +24,26 @@
     <div id="todoForm" class="">
         <form action="" class="flex">
             <div class="todoInputDiv flex flexCenter ">
+                <p id="taskTime"></p>
                 <input type="text" id="todoTitle" class="" placeholder="What would you like to do?">
             </div>
             <div class="todoInputIconDiv flex flexCenter flexBetween">
-                <span id="calendar"><i class="fas fa-solid fa-calendar"></i></span>
-                <span id="flag"><i class="fas fa-solid fa-flag"></i></span>
+                <span id="calendar" class="">
+                    <div class="sd-container">
+                        <input class="sd datepicker-inputs" type="datetime-local" name="selected_date" />
+                    </div>
+                </span>
+
+                <!-- <span id="calendar" class=""><input type="datetime-local" placeholder="open Calendar"
+                        class="datepicker-input" open /><i class="fas fa-solid fa-calendar"></i></span> -->
+
+                <span id="flag"><i class="fas fa-solid fa-flag"></i>
+                    <select name="p" id="taskPriority" class="select-input">
+                        <option value="p1">High Priority</option>
+                        <option value="p2">Medium Priority</option>
+                        <option value="p3">Low Priority</option>
+                    </select>
+                </span>
                 <span id="submitInput"><i class="fas fa-solid fa-check-double"></i></span>
             </div>
         </form>
@@ -36,8 +51,8 @@
     <span id="openInput"><i class="fas fa-solid fa-plus"></i></span>
 
     <!-- main todo -->
-    <div class="taskBody flex flexEvenly">
-        <div class="borderRadius w-33 p1Task ">
+    <div id="todoTaskBody" class="taskBody flex flexEvenly">
+        <!-- <div class="borderRadius w-33 p1Task ">
             <span id="taskTag"> <i class="fas fa-solid fa-bookmark"></i></span>
             <h3>Task Title</h3>
             <div class="flex flexCenter flexBetween">
@@ -45,25 +60,7 @@
                 <span id="taskTime" class="flex flexCenter "><i class="fas fa-solid fa-clock"></i>
                     <pre> 9pm 25-5-22</pre></span>
             </div>
-        </div>
-        <div class="borderRadius complated w-33 p2Task ">
-            <span id="taskTag"> <i class="fas fa-solid fa-bookmark"></i></span>
-            <h3>Task Title</h3>
-            <div class="flex flexCenter flexBetween">
-                <span id="taskDone"> <i class="fas fa-1x fa-solid fa-check"></i></span>
-                <span id="taskTime" class="flex flexCenter "><i class="fas fa-solid fa-clock"></i>
-                    <pre> 9pm 25-5-22</pre></span>
-            </div>
-        </div>
-        <div class="borderRadius w-33 p3Task ">
-            <span id="taskTag"> <i class="fas fa-solid fa-bookmark"></i></span>
-            <h3>Task Title</h3>
-            <div class="flex flexCenter flexBetween">
-                <span id="taskDone"> <i class="fas fa-1x fa-solid fa-check"></i></span>
-                <span id="taskTime" class="flex flexCenter "><i class="fas fa-solid fa-clock"></i>
-                    <pre> 9pm 25-5-22</pre></span>
-            </div>
-        </div>
+        </div> -->
     </div>
     <!-- script -->
     <script src="app.js"></script>
