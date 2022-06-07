@@ -27,15 +27,20 @@ html {
 /* common classes */
 h3 {
     font-size: 1.2rem;
-    margin-bottom: 1em;
+    margin: .7em 0 1em 0;
+
 }
 
 .w-33 {
     background: var(--bg-color);
-    width: 30%;
-    padding: 1.5em;
-    margin: 1em;
+    width: 100%;
+    padding: 1em;
+    margin: .5em 0em;
     position: relative;
+}
+
+.w-33 span {
+    margin: 0;
 }
 
 .borderRadius {
@@ -107,12 +112,34 @@ body {
     width: 100%;
     margin: auto;
     position: fixed;
-    bottom: 0;
+    z-index: 1000;
+    border-top: 1px solid var(--border-color);
+    bottom: -100%;
+}
+
+#todoForm.openTodoForm {
+    transition: .5s;
+    bottom: 0%;
+}
+
+span#openInput {
+    display: inline-block;
+    position: fixed;
+    z-index: 2000;
+    right: 17px;
+    bottom: 16px;
+    background: var(--p2-task);
+}
+
+span#openInput.closedBtn {
+    display: none;
+    z-index: -1000;
 }
 
 .todoInputDiv {
     flex: 1;
-    padding: 1rem;
+    padding: .1em;
+    flex-basis: 100%;
 }
 
 .todoInputDiv input {
@@ -125,9 +152,17 @@ body {
     text-transform: capitalize;
 }
 
+.todoInputIconDiv {
+    flex-basis: 100%;
+}
+
 /* task */
 .taskBody {
-    padding-top: 1em;
+    padding: 1em;
+}
+
+.taskBody.taskBodyOpacity {
+    opacity: .5;
 }
 
 #taskTag {
@@ -135,7 +170,7 @@ body {
     position: absolute;
     margin-top: 0;
     top: -0.1rem;
-    right: 0.7rem;
+    right: 1.5rem;
     padding: 0;
 }
 
@@ -165,4 +200,21 @@ body {
 
 .complated #taskDone {
     background: var(--done);
+}
+
+/* media */
+@media screen and (min-width:991px) {
+    .w-33 {
+        background: var(--bg-color);
+        width: 30%;
+        padding: 1.5em;
+        margin: 1em;
+        position: relative;
+    }
+
+    .todoInputDiv,
+    .todoInputIconDiv {
+        flex-basis: auto;
+    }
+
 }
