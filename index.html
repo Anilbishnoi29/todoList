@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="30">
+    <!-- <meta http-equiv="refresh" content="30"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -22,6 +22,14 @@
     <!-- todo -->
     <!-- <div id="mode"><img src="img/circle-half-stroke-solid.svg" alt="mode" srcset=""></div> -->
     <!-- todo-form -->
+    <header class="flex flexBetween flexCenter">
+        <div class="flex"> <a href="index.html"><img class="logo" src="img/logo.png" width="50px" height="auto"
+                    alt=""></a> </div>
+        <div class="flex"> <span id="allTask">All Task <p id="allTaskNo" class="taskNo flex flexCenter"></p> </span>
+            <span id="complatedTask">Completed Tasks <p id="comTaskNo" class="taskNo flex flexCenter"></p> </span>
+            <span id="unComplatedTask">Remaining Tasks <p id="unTaskNo" class="taskNo flex flexCenter"></p> </span>
+        </div>
+    </header>
     <div id="todoForm" class="">
         <form action="" class="flex">
             <div class="todoInputDiv flex flexCenter ">
@@ -30,21 +38,11 @@
             </div>
             <div class="todoInputIconDiv flex flexCenter flexBetween">
                 <span id="calendar" class="">
-                    <div class="sd-container">
+                    <div class="sd-container"><i class="fas fa-solid fa-calendar"></i>
                         <input class="sd datepicker-inputs" type="datetime-local"
                             pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" name="selected_date" />
-                        <!-- <input type="number" id="taskHour" placeholder="HH" min="00" max="12">
-                        <input type="number" id="taskMin" placeholder="MM" min="00" max="59">
-                        <select name="p" id="" class="datepicker-inputs">
-                            <option value="AM">AM</option>
-                            <option value="PM">PM</option>
-                        </select> -->
                     </div>
                 </span>
-
-                <!-- <span id="calendar" class=""><input type="datetime-local" placeholder="open Calendar"
-                        class="datepicker-input" open /><i class="fas fa-solid fa-calendar"></i></span> -->
-
                 <span id="flag"><i class="fas fa-solid fa-flag"></i>
                     <select name="p" id="taskPriority" class="select-input">
                         <option value="p1">High Priority</option>
@@ -60,15 +58,6 @@
 
     <!-- main todo -->
     <div id="todoTaskBody" class="taskBody flex flexEvenly">
-        <!-- <div class="borderRadius w-33 p1Task ">
-            <span id="taskTag"> <i class="fas fa-solid fa-bookmark"></i></span>
-            <h3>Task Title</h3>
-            <div class="flex flexCenter flexBetween">
-                <span id="taskDone"> <i class="fas fa-1x fa-solid fa-check"></i></span>
-                <span id="taskTime" class="flex flexCenter "><i class="fas fa-solid fa-clock"></i>
-                    <pre> 9pm 25-5-22</pre></span>
-            </div>
-        </div> -->
     </div>
     <!-- script -->
     <script src="app.js"></script>

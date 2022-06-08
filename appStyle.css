@@ -24,6 +24,15 @@ html {
 
 }
 
+header {
+    background-color: var(--bg-color);
+    padding: 0 1.5rem;
+}
+
+header .logo {
+    filter: invert(1);
+}
+
 /* common classes */
 h3 {
     font-size: 1.2rem;
@@ -35,7 +44,13 @@ pre {
     margin-left: 0.5rem;
 }
 
-
+a,
+a:hover,
+a:focus {
+    text-decoration: none;
+    font-size: 2rem;
+    color: var(--p3-task);
+}
 
 .w-33 {
     background: var(--bg-color);
@@ -97,6 +112,22 @@ input:hover {
     outline: none;
     border: none;
     position: relative;
+}
+
+.taskNo {
+    background-color: var(--p3-task);
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 1rem;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--bg-2-color);
+    font-weight: 600;
 }
 
 button {
@@ -282,11 +313,22 @@ select#taskPriority option {
     color: transparent !important;
 }
 
+i.fas.fa-solid.fa-calendar {
+    pointer-events: none;
+}
+
 input[type="datetime-local"i] {
     font-size: 1rem;
     padding: 1rem;
     color: red;
     filter: invert(1);
+    position: absolute;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    margin: auto;
+    top: 0;
+    bottom: 0;
 }
 
 .sd::-webkit-calendar-picker-indicator {

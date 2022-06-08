@@ -5,6 +5,9 @@ const calendar = document.querySelector("#calendar");
 const taskFlag = document.querySelector("#flag");
 const todoTaskBody = document.querySelector("#todoTaskBody");
 const taskDone = document.querySelector("#taskDone");
+const complatedTask = document.querySelector("#complatedTask");
+const unComplatedTask = document.querySelector("#unComplatedTask");
+const allTask = document.querySelector("#allTask");
 
 const LOCAL_STORAGE_TODO_KEY = "tasks.list";
 const LOCAL_STORAGE_TODO_LIST_ID = "tasks.selectedListId";
@@ -55,14 +58,14 @@ function createTask() {
     let eventtime = document.querySelector(".datepicker-inputs").value;
     const taskPriority = document.querySelector("#taskPriority").value;
     const taskTitle = document.querySelector("#todoTitle").value;
-
-    var target = new Date(eventtime);
-    const current = formatAMPM(target);
-    console.log(current)
-
-    const list = createList(taskTitle, current, taskPriority, false);
-    todoLists.push(list);
-    saveAndRender();
+    const current = formatAMPM(new Date(eventtime));
+    if (taskTitle !== "") {
+        const list = createList(taskTitle, current, taskPriority, false);
+        todoLists.push(list);
+        saveAndRender();
+    } else {
+        alert("Enter task name !");
+    }
 }
 
 // save to local storage
@@ -79,10 +82,10 @@ function createList(name, dateTime, flag, done) {
         done: done
     }
 }
-
-function renderList() {
+// create task
+function createTaskList(taskList) {
     clearElement(todoTaskBody);
-    todoLists.forEach(list => {
+    taskList.forEach(list => {
         let creatTasks = document.createElement("div");
         creatTasks.classList.add("borderRadius");
         creatTasks.classList.add("w-33");
@@ -110,11 +113,17 @@ function renderList() {
             `;
         todoTaskBody.appendChild(creatTasks);
     });
+    taskNo();
+}
+
+function renderList() {
+    createTaskList(todoLists);
 }
 
 function saveAndRender() {
     saveToTask();
     renderList();
+    taskNo();
 }
 taskDone
 
@@ -134,8 +143,10 @@ todoTaskBody.addEventListener("click", (e) => {
             if (list.id === removeId) {
                 if (list.done == true) {
                     list.done = false;
+                    taskNo();
                 } else {
                     list.done = true;
+                    taskNo();
                 }
             }
         });
@@ -147,9 +158,37 @@ todoTaskBody.addEventListener("click", (e) => {
         todoLists.forEach(list => {
             if (list.id === removeId) {
                 todoLists.splice(todoLists.findIndex(a => a.id === removeId), 1);
+                taskNo();
             }
         });
     }
     localStorage.removeItem(e)
     saveAndRender();
+    taskNo();
 })
+
+// complatedTask
+complatedTask.addEventListener("click", () => {
+    let complatedTaskList = todoLists.filter(list => list.done === true);
+    createTaskList(complatedTaskList);
+})
+unComplatedTask.addEventListener("click", () => {
+    let unComplatedTaskList = todoLists.filter(list => list.done !== true);
+    createTaskList(unComplatedTaskList);
+})
+allTask.addEventListener("click", () => {
+    createTaskList(todoLists);
+    return todoLists.length;
+})
+
+function taskNo() {
+    const allTaskNo = document.querySelector("#allTaskNo");
+    const comTaskNo = document.querySelector("#comTaskNo");
+    const unTaskNo = document.querySelector("#unTaskNo");
+    let ComplatedTaskNo = todoLists.filter(list => list.done === true).length;
+    let unComplatedTaskNo = todoLists.filter(list => list.done !== true).length;
+    allTaskNo.innerHTML = todoLists.length;
+    comTaskNo.innerHTML = ComplatedTaskNo;
+    unTaskNo.innerHTML = unComplatedTaskNo;
+}
+taskNo();
