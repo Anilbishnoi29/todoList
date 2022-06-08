@@ -45,27 +45,17 @@ pre {
     position: relative;
 }
 
-.w-33 span#TaskTime {
-    background: #651FFF;
-    display: none;
-    position: absolute;
-    bottom: 0;
-    padding: .5em;
-    font-size: 1rem;
-    border-top-left-radius: .5em;
-    border-top-right-radius: .5em;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    margin: auto;
-    left: 90px;
-    width: 8rem;
+.taskTimeOn {
+    border: 2px solid var(--done);
 }
 
-.w-33.onGoingTask span#TaskTime {
-    border: 2px solid #651FFF;
-    display: block;
+.taskTimeOn:hover {
+    border: 2px solid var(--done);
 }
 
+.flex.flexCenter #taskDone {
+    margin-right: 1em;
+}
 
 .w-33 span {
     margin: 0;

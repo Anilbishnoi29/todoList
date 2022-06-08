@@ -7,7 +7,9 @@ const todoTaskBody = document.querySelector("#todoTaskBody");
 const taskDone = document.querySelector("#taskDone");
 
 const LOCAL_STORAGE_TODO_KEY = "tasks.list";
+const LOCAL_STORAGE_TODO_LIST_ID = "tasks.selectedListId";
 const todoLists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_TODO_KEY)) || [];
+const selectedListId = localStorage.getItem(LOCAL_STORAGE_TODO_LIST_ID);
 // event 
 openInput.addEventListener("click", function () {
     todoForm.classList.add("openTodoForm");
@@ -58,7 +60,7 @@ function createTask() {
     const current = formatAMPM(target);
     console.log(current)
 
-    const list = createList(taskTitle, current, taskPriority, true);
+    const list = createList(taskTitle, current, taskPriority, false);
     todoLists.push(list);
     saveAndRender();
 }
@@ -91,19 +93,20 @@ function renderList() {
         }
         let currentTime = new Date();
         let crntTime = formatAMPM(currentTime);
+        let taskTimeOn = "";
         if (list.dateTime > crntTime) {
-            console.log("yes");
+            taskTimeOn = "";
         } else {
-            creatTasks.classList.add("onGoingTask");
+            taskTimeOn = "taskTimeOn";
         }
         creatTasks.innerHTML = `<span id="taskTag"> <i class="fas fa-solid fa-bookmark"></i></span>
     <h3>${list.name}</h3>
-            <div class="flex flexCenter flexBetween">
+            <div class="flex flexCenter flexBetween"><div class="flex flexCenter">
                 <span id="taskDone" class="taskDone"> <i class="fas fa-1x fa-solid fa-check"></i></span>
-                <span id="taskTime" class="flex flexCenter "><i class="fas fa-solid fa-clock"></i>
+                <span id="taskDelete" class="taskDelete"> <i class="fas fa-1x fa-solid fa-trash"></i></span></div>
+                <span id="taskTime" class="flex flexCenter ${taskTimeOn}"><i class="fas fa-solid fa-clock"></i>
                     <pre>${list.dateTime}</pre></span>
             </div>
-            <span id="TaskTime"> On Going Task </span>
             `;
         todoTaskBody.appendChild(creatTasks);
     });
@@ -124,8 +127,9 @@ renderList(); // render all list
 
 todoTaskBody.addEventListener("click", (e) => {
     if (e.target.className === "taskDone") {
-        let x = e.target.parentNode;
-        let removeId = x.parentNode.dataset.listId
+        let doneBtn = e.target.parentNode;
+        let doneBtnParent = doneBtn.parentNode;
+        let removeId = doneBtnParent.parentNode.dataset.listId
         todoLists.forEach(list => {
             if (list.id === removeId) {
                 if (list.done == true) {
@@ -133,6 +137,16 @@ todoTaskBody.addEventListener("click", (e) => {
                 } else {
                     list.done = true;
                 }
+            }
+        });
+    }
+    if (e.target.className === "taskDelete") {
+        let doneBtn = e.target.parentNode;
+        let doneBtnParent = doneBtn.parentNode;
+        let removeId = doneBtnParent.parentNode.dataset.listId
+        todoLists.forEach(list => {
+            if (list.id === removeId) {
+                todoLists.splice(todoLists.findIndex(a => a.id === removeId), 1);
             }
         });
     }
