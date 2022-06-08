@@ -94,14 +94,7 @@ function createTaskList(taskList) {
         if (list.done === true) {
             creatTasks.classList.add("complated");
         }
-        let currentTime = new Date();
-        let crntTime = formatAMPM(currentTime);
-        let taskTimeOn = "";
-        if (list.dateTime > crntTime) {
-            taskTimeOn = "";
-        } else {
-            taskTimeOn = "taskTimeOn";
-        }
+        let taskTimeOn = "taskTimeOn";
         creatTasks.innerHTML = `<span id="taskTag"> <i class="fas fa-solid fa-bookmark"></i></span>
     <h3>${list.name}</h3>
             <div class="flex flexCenter flexBetween"><div class="flex flexCenter">

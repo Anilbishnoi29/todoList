@@ -139,13 +139,15 @@ span#allTask,
 span#unComplatedTask,
 span#complatedTask {
     margin: 0;
-    margin-right: 1.5em;
+    margin-right: 1em;
+    padding: 0.8em;
 }
+
 
 
 span {
     display: block;
-    padding: 1em;
+    padding: 0.8em;
     background: var(--bg-2-color);
     border-radius: 1em;
     margin: 1em;
@@ -308,13 +310,40 @@ select#taskPriority option {
 
     header {
         background-color: var(--bg-color);
-        padding: 0.5em 1em;
+        padding: 0.8em 1em;
     }
 
     .todoInputDiv,
     .todoInputIconDiv {
         flex-basis: auto;
     }
+
+    select#taskPriority,
+    select#taskPriority :hover,
+    select#taskPriority :focus,
+    span,
+    span:hover,
+    span:focus,
+    button,
+    button:hover,
+    button:focus,
+    input,
+    input:focus,
+    input:hover {
+        outline: none;
+        border: none;
+        position: relative;
+        font-size: 1rem;
+    }
+
+    span#allTask,
+    span#unComplatedTask,
+    span#complatedTask {
+        margin: 0;
+        margin-right: 1em;
+        padding: 1em 1.5em;
+    }
+
 
 }
 
