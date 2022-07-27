@@ -64,6 +64,7 @@ function createTask() {
     } else {
         alert("Enter task name !");
     }
+    document.querySelector("#todoTitle").value = "";
 }
 
 // save to local storage
