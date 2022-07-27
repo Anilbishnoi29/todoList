@@ -1,7 +1,6 @@
 const openInput = document.querySelector("#openInput");
 const submitInput = document.querySelector("#submitInput");
 const todoForm = document.querySelector("#todoForm");
-
 const taskFlag = document.querySelector("#flag");
 const todoTaskBody = document.querySelector("#todoTaskBody");
 const taskDone = document.querySelector("#taskDone");
