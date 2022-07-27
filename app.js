@@ -1,7 +1,7 @@
 const openInput = document.querySelector("#openInput");
 const submitInput = document.querySelector("#submitInput");
 const todoForm = document.querySelector("#todoForm");
-const calendar = document.querySelector("#calendar");
+
 const taskFlag = document.querySelector("#flag");
 const todoTaskBody = document.querySelector("#todoTaskBody");
 const taskDone = document.querySelector("#taskDone");
@@ -14,17 +14,17 @@ const LOCAL_STORAGE_TODO_LIST_ID = "tasks.selectedListId";
 const todoLists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_TODO_KEY)) || [];
 const selectedListId = localStorage.getItem(LOCAL_STORAGE_TODO_LIST_ID);
 // event 
-openInput.addEventListener("click", function () {
+openInput.addEventListener("click",function () {
     todoForm.classList.add("openTodoForm");
     openInput.classList.add("closedBtn");
 });
-submitInput.addEventListener("click", function () {
+submitInput.addEventListener("click",function () {
     todoForm.classList.remove("openTodoForm");
     openInput.classList.remove("closedBtn");
     createTask();
 });
 
-taskFlag.addEventListener("click", function () {
+taskFlag.addEventListener("click",function () {
     const taskPriority = document.querySelector("#taskPriority").value;
     if (taskPriority === "p1") {
         taskFlag.classList.add("p1Task");
@@ -33,7 +33,7 @@ taskFlag.addEventListener("click", function () {
     } else if (taskPriority === "p3") {
         taskFlag.classList.add("p3Task");
     }
-})
+});
 // date and time
 function formatAMPM(date) {
     var hours = date.getHours();
@@ -55,12 +55,11 @@ function createTask() {
         day: 'numeric'
     };
 
-    let eventtime = document.querySelector(".datepicker-inputs").value;
     const taskPriority = document.querySelector("#taskPriority").value;
     const taskTitle = document.querySelector("#todoTitle").value;
-    const current = formatAMPM(new Date(eventtime));
+    const current = formatAMPM(new Date());
     if (taskTitle !== "") {
-        const list = createList(taskTitle, current, taskPriority, false);
+        const list = createList(taskTitle,current,taskPriority,false);
         todoLists.push(list);
         saveAndRender();
     } else {
@@ -70,17 +69,17 @@ function createTask() {
 
 // save to local storage
 function saveToTask() {
-    localStorage.setItem(LOCAL_STORAGE_TODO_KEY, JSON.stringify(todoLists));
+    localStorage.setItem(LOCAL_STORAGE_TODO_KEY,JSON.stringify(todoLists));
 }
 
-function createList(name, dateTime, flag, done) {
+function createList(name,dateTime,flag,done) {
     return {
         id: Date.now().toString(),
         name: name,
         dateTime: dateTime,
         flag: flag,
         done: done
-    }
+    };
 }
 // create task
 function createTaskList(taskList) {
@@ -118,7 +117,7 @@ function saveAndRender() {
     renderList();
     taskNo();
 }
-taskDone
+taskDone;
 
 function clearElement(element) {
     while (element.firstChild) {
@@ -127,11 +126,11 @@ function clearElement(element) {
 }
 renderList(); // render all list 
 
-todoTaskBody.addEventListener("click", (e) => {
+todoTaskBody.addEventListener("click",(e) => {
     if (e.target.className === "taskDone") {
         let doneBtn = e.target.parentNode;
         let doneBtnParent = doneBtn.parentNode;
-        let removeId = doneBtnParent.parentNode.dataset.listId
+        let removeId = doneBtnParent.parentNode.dataset.listId;
         todoLists.forEach(list => {
             if (list.id === removeId) {
                 if (list.done == true) {
@@ -147,32 +146,32 @@ todoTaskBody.addEventListener("click", (e) => {
     if (e.target.className === "taskDelete") {
         let doneBtn = e.target.parentNode;
         let doneBtnParent = doneBtn.parentNode;
-        let removeId = doneBtnParent.parentNode.dataset.listId
+        let removeId = doneBtnParent.parentNode.dataset.listId;
         todoLists.forEach(list => {
             if (list.id === removeId) {
-                todoLists.splice(todoLists.findIndex(a => a.id === removeId), 1);
+                todoLists.splice(todoLists.findIndex(a => a.id === removeId),1);
                 taskNo();
             }
         });
     }
-    localStorage.removeItem(e)
+    localStorage.removeItem(e);
     saveAndRender();
     taskNo();
-})
+});
 
 // complatedTask
-complatedTask.addEventListener("click", () => {
+complatedTask.addEventListener("click",() => {
     let complatedTaskList = todoLists.filter(list => list.done === true);
     createTaskList(complatedTaskList);
-})
-unComplatedTask.addEventListener("click", () => {
+});
+unComplatedTask.addEventListener("click",() => {
     let unComplatedTaskList = todoLists.filter(list => list.done !== true);
     createTaskList(unComplatedTaskList);
-})
-allTask.addEventListener("click", () => {
+});
+allTask.addEventListener("click",() => {
     createTaskList(todoLists);
     return todoLists.length;
-})
+});
 
 function taskNo() {
     const allTaskNo = document.querySelector("#allTaskNo");
